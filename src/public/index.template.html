@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>A frame boilerplate</title>
+</head>
+<body>
+<!-- https://github.com/therealwebby/aframe-boilerplate-es6 -->
+<!--
+    COLORS:
+    #484D6D - sky/purple
+    #0E0E14 - sky/black
+    #8FB8DE - blue
+-->
+  <a-scene fog="type: linear; color: #CCC" physics="debug: true; friction: 0.7; restitution: 0.5;">
+
+    <!-- Assets -->
+    <a-assets>
+      <!-- <a-asset-item id="tree" src="Tree.gltf"></a-asset-item> -->
+      <a-asset-item id="castle" src="/Castle.glb"></a-asset-item>
+    </a-assets>
+
+    <!-- Using the asset management system. -->
+    <!-- <a-entity position="0 2 0" gltf-model="static/Tree.gltf"></a-entity> -->
+    <!-- <a-gltf-model position="0 2 0"  color="#4CC3D9"src="#tree"></a-gltf-model> -->
+
+
+
+    <a-light type="point" color="#ccc" position="0 100 0"></a-light>
+    <!-- <a-light color="red" position="-1 1 0"></a-light> -->
+    <a-box position="0 10 0" rotation="0 45 0" color="#4CC3D9" dynamic-body="shape: box; mass: 1;"></a-box>
+
+    <!-- Camera - Player -->
+    <a-entity position="-13.389 15 2.366" universal-controls kinematic-body>
+      <a-camera id="player" position="0 1.6 0" look-controls></a-camera>
+    </a-entity>
+
+    <!-- <a-entity camera look-controls wasd-controls position="-13.389 15 2.366" dynamic-body="shape: box; mass: 1;"> -->
+      <!-- <a-entity ></a-entity> -->
+    <!-- </a-entity> -->
+    <!-- Castle -->
+    <a-entity
+      position="0 0 0"
+      scale="3 3 3"
+      gltf-model="#castle">
+    </a-entity>
+
+
+    <!-- Landscape -->
+    <a-entity id="terrain" position="0 0 0"
+      body="type: static; mass: 100; shape: none;"
+      shape__valley="shape: box; position: 0 3 0; halfExtents: 100 3 100;"
+      landscape>
+    </a-entity>
+
+    <!-- Water -->
+    <!-- <a-entity
+      position="0 -6.578 0"
+      rotation="-90 0 0"
+      scale="200 200 5"
+      geometry="primitive: plane"
+      material="color: #8FB8DE; roughness: 1; metalness: 1; opacity: .6;"
+      sea>
+    </a-entity> -->
+
+    <a-ocean position="0 -5 0" color="#92E2E2" width="300" depth="300" density="50" speed="3"></a-ocean>
+
+    <!-- Sky -->
+    <a-gradient-sky material="shader: gradient; topColor: 14 14 20; bottomColor: 72 77 109;"></a-gradient-sky>
+
+  </a-scene>
+
+</body>
+</html>
